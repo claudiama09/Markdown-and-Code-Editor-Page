@@ -1,7 +1,7 @@
 import * as esbuild from "esbuild-wasm";
 import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
-import {unpkgPathPlugin} from './plugins/unpkg-path-plugin';
+import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 
 const App = () => {
   const [input, setInput] = useState("");
@@ -30,19 +30,19 @@ const App = () => {
     // });
 
     const result = await ref.current.build({
-      entryPoints: ['index.js'],  //this means we want index.js to be the first file to be bundled inside out application
+      entryPoints: ["index.js"], //this means we want index.js to be the first file to be bundled inside out application
       bundle: true,
       write: false,
       plugins: [unpkgPathPlugin()],
       define: {
-        'process.env.NODE_ENV': '"prodection"',
-        global: 'window',
-      }
+        "process.env.NODE_ENV": '"prodection"',
+        global: "window",
+      },
     });
 
-    console.log(result)
+    console.log(result);
 
-    setCode(result.outputFiles[0].text)
+    setCode(result.outputFiles[0].text);
   };
 
   return (
